@@ -131,11 +131,10 @@ except ImportError:
 if not DEBUG:
     print(DEBUG)
     SECRET_KEY = os.environ.get('SECRET_KEY', '')
+    GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
+    GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
     db_from_env = dj_database_url.config()
     DATABASES = {'default': dj_database_url.config()}
     DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-    
-    # HEROKU GDAL and GEOS settings for postgis above and for future blogs
-    GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
-    GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
 
+    # HEROKU GDAL and GEOS settings for postgis above and for future blogs
