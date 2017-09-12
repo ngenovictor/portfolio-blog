@@ -19,12 +19,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
+SECRET_KEY = 'secret'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'veekay.herokuapp.com']
 
 
 # Application definition
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -112,9 +114,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_root")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static", "our_static")
+]
 
-# Extra local settings for db
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media_root")
+
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     pass
+
+
+if not DEBUG:
+    print(DEBUG)
+    SECRET_KEY = "define from enviroment variables"
+    # DATABASES = {
+    #     'default': 'collect_from_environment_variables'
+    # }
+
