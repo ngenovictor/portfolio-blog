@@ -127,10 +127,13 @@ try:
 except ImportError:
     pass
 
-GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
-GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
-
 if not DEBUG:
+    from os import environ
+
+    GEOS_LIBRARY_PATH = "{}/libgeos_c.so".format(environ.get('GEOS_LIBRARY_PATH'))
+    GDAL_LIBRARY_PATH = "{}/libgdal.so".format(environ.get('GDAL_LIBRARY_PATH'))
+    PROJ4_LIBRARY_PATH = "{}/libproj.so".format(environ.get('PROJ4_LIBRARY_PATH'))
+
     SECRET_KEY = os.environ.get('SECRET_KEY', '')
     db_from_env = dj_database_url.config()
     DATABASES = {'default': dj_database_url.config()}
