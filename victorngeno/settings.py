@@ -129,6 +129,17 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media_root")
 
+# email settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mailappvictor@gmail.com' #my gmail username
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "Victor <mailappvictor@gmail.com>"
+
+
+ADMINS = [('Victor', EMAIL_HOST_USER)]
+MANAGERS = ADMINS
+
 try:
     from .local_settings import *
 except ImportError:
@@ -145,4 +156,4 @@ if not DEBUG:
     DATABASES = {'default': dj_database_url.config()}
     DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
-    # HEROKU GDAL and GEOS settings for postgis above and for future blogs
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # my gmail password
