@@ -29,12 +29,12 @@
     <!--My stuff starts here-->
     <title>Ngeno</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
-<body>
+<body id="page-top">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -49,9 +49,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden"><a href="#page-top"></a></li>
-                    <li class="page-scroll"><a href="#portfolio">Portfolio</a></li>
-                    <li class="page-scroll"><a href="#about">About</a></li>
-                    <li class="page-scroll"><a href="#contact">Contact</a></li>
+                    <li class="js-scroll-trigger"><a href="#portfolio">Portfolio</a></li>
+                    <li class="js-scroll-trigger"><a href="#about">About</a></li>
+                    <li class="js-scroll-trigger"><a href="#contact">Contact</a></li>
                     <li><a href="{% url 'blog' %}">Blog</a></li>
                 </ul>
             </div>
