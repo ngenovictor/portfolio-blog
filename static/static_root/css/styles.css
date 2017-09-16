@@ -390,3 +390,14 @@ fieldset[disabled] .btn-success.active {
   border-radius: 100%;
   line-height: 28px;
 }
+.main_content{
+  padding-left: 5em;
+  display: flex;
+}
+.col-vc-7{
+  width: 60%;
+
+}
+.col-vc-3{
+  width: 40%;
+}
