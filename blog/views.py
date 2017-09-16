@@ -7,3 +7,11 @@ def index(request):
         "title":"Home"
     }
     return render(request, template, context)
+
+
+def view_blog_site(request):
+    template = "blog.html"
+    context = {
+        "title":"Veekay Blog"
+    }
+    return render(request, template, context)

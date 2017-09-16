@@ -1,4 +1,8 @@
-{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,10 +52,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="page-scroll"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="page-scroll"><a href="{% url 'home' %}#portfolio">Portfolio</a></li>
-                    <li class="page-scroll"><a href="{% url 'home' %}#about">About</a></li>
-                    <li class="page-scroll"><a href="#">Contact</a></li>
+                    <li class="hidden"><a href="#page-top"></a></li>
+                    <li class="page-scroll"><a href="#portfolio">Portfolio</a></li>
+                    <li class="page-scroll"><a href="#about">About</a></li>
+                    <li class="page-scroll"><a href="#contact">Contact</a></li>
                     <li><a href="{% url 'blog' %}">Blog</a></li>
                 </ul>
             </div>
@@ -117,5 +121,10 @@
 	<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html></title>
+</head>
+<body>
+
 </body>
 </html>
