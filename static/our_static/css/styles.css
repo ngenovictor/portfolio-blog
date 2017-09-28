@@ -13,39 +13,48 @@ h1,h2,h3,h4,h5,h6 {
   text-transform: uppercase;
   font-weight: 700;
 }
-hr.star-light,
-hr.star-primary {
-  padding: 0;
-  border: none;
-  border-top: solid 5px;
-  text-align: center;
-  max-width: 250px;
-  margin: 25px auto 30px;
+
+/*horizontal lines styling*/
+hr.star-light, hr.star-primary {
+    max-width: 250px;
+    margin: 25px auto 30px;
+    padding: 0;
+    text-align: center;
+    border: none;
+    border-top: solid 5px;
 }
-hr.star-light:after,
-hr.star-primary:after {
-    font-family: FontAwesome;
-    display: inline-block;
-    position: relative;
-    top: -0.8em;
-    font-size: 2em;
-    padding: 0 0.25em;
-	content: "\f005";
-}
+
 hr.star-light {
-  border-color: white;
-}
+    border-color: white; }
+
 hr.star-light:after {
-  background-color: #18BC9C;
-  color: white;
-}
+    color: white;
+    background-color: #18BC9C; }
+
 hr.star-primary {
-  border-color: #2C3E50;
+    border-color: #2C3E50;
 }
+
 hr.star-primary:after {
-  background-color: white;
-  color: #2C3E50;
+    color: #2C3E50;
+    background-color: white;
 }
+
+hr.star-light:before, hr.star-primary:before{
+    font-family: FontAwesome;
+    font-size: 2em;
+    position: relative;
+    top: -.8em;
+    display: inline-block;
+    padding: 0 0.25em;
+    content: '\f005';
+}
+
+
+/*end styles for hr*/
+
+
+
 .img-centered {
   margin: 0 auto;
 }
@@ -188,18 +197,7 @@ section.success {
 	padding-top: 75px;
   }
 }
-hr.about{
-  padding: 0;
-  border: none;
-  border-top: solid 5px;
-  text-align: center;
-  max-width: 250px;
-  /*margin: 25px auto 30px;*/
-}
 
-hr.star-primary.about{
-  background: #18BC9C;
-}
 
 section#contact{
   /*background: #18BC9C;*/
@@ -261,6 +259,7 @@ section#contact{
   margin: 0;
 }
 .img-fluid {
+    border: solid rgba(0,0,0,0.4) 1px;
 	max-width: 100%;
 	height: auto;
 }
@@ -272,64 +271,68 @@ section#contact{
   #portfolio .portfolio-item {
 	margin: 0 0 30px; } }
 
-.portfolio-modal .modal-dialog {
-  max-width: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  border: none;
+
+.portfolio-modal .modal-content {
   border-radius: 0;
   background-clip: border-box;
   -webkit-box-shadow: none;
-  box-shadow: none; }
-  .portfolio-modal .modal-dialog .modal-content {
-	padding: 100px 0;
-	border: 0;
-	border-radius: 0; }
-	.portfolio-modal .modal-dialog .modal-content h2 {
-	  font-size: 3em;
-	  margin: 0; }
-	.portfolio-modal .modal-dialog .modal-content img {
-	  margin-bottom: 30px; }
-	.portfolio-modal .modal-dialog .modal-content .item-details {
-	  margin: 30px 0; }
-
+  box-shadow: none;
+  border: none;
+  min-height: 100%;
+  padding: 100px 0;
+  text-align: center;
+}
+.portfolio-modal .modal-content h2 {
+  margin: 0;
+  font-size: 3em;
+}
+.portfolio-modal .modal-content img {
+    border: solid rgba(0,0,0,0.4) 1px;
+    padding:1px;
+    margin-bottom: 30px;
+}
+.portfolio-modal .modal-content .item-details {
+  margin: 30px 0;
+}
 .portfolio-modal .close-modal {
   position: absolute;
-  top: 25px;
-  right: 25px;
   width: 75px;
   height: 75px;
+  background-color: transparent;
+  top: 25px;
+  right: 25px;
   cursor: pointer;
-  background-color: transparent; }
-  .portfolio-modal .close-modal:hover {
-	opacity: 0.3; }
-  .portfolio-modal .close-modal .lr {
-	/* Safari and Chrome */
-	z-index: 1051;
-	width: 1px;
-	height: 75px;
-	margin-left: 35px;
-	/* IE 9 */
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
-	background-color: #2C3E50; }
-	.portfolio-modal .close-modal .lr .rl {
-	  /* Safari and Chrome */
-	  z-index: 1052;
-	  width: 1px;
-	  height: 75px;
-	  /* IE 9 */
-	  -webkit-transform: rotate(90deg);
-	  -ms-transform: rotate(90deg);
-	  transform: rotate(90deg);
-	  background-color: #2C3E50; }
-
+}
+.portfolio-modal .close-modal:hover {
+  opacity: 0.3;
+}
+.portfolio-modal .close-modal .lr {
+  height: 75px;
+  width: 1px;
+  margin-left: 35px;
+  background-color: #2C3E50;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Safari and Chrome */
+  z-index: 1051;
+}
+.portfolio-modal .close-modal .lr .rl {
+  height: 75px;
+  width: 1px;
+  background-color: #2C3E50;
+  transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  /* Safari and Chrome */
+  z-index: 1052;
+}
 .portfolio-modal .modal-backdrop {
+  opacity: 0;
   display: none;
-  opacity: 0; }
+}
 /*end for the portfolio*/
 
 .floating-label-form-group {
