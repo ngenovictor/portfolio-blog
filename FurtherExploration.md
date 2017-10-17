@@ -4,4 +4,4 @@
 4. Hakikisha All links work
 5. Open source projects - links to the commits that you made
 6. Include contribution to OSM
-7.  
+7. What role did you play in contributions you made?

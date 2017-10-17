@@ -11,19 +11,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import dj_database_url
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-SECRET_KEY = 'secret'
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 'veekay.herokuapp.com']
 
@@ -141,11 +135,15 @@ ADMINS = [('Victor', EMAIL_HOST_USER)]
 MANAGERS = ADMINS
 
 try:
-    from .local_settings import *
+    from .local_settings import SECRET_KEY, DATABASES, EMAIL_HOST_PASSWORD
+    DEBUG = True
+    SECRET_KEY = SECRET_KEY
+    DATABASES = DATABASES
+    EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 except ImportError:
-    pass
-
-if not DEBUG:
+    #production settings are defined here
+    DEBUG = False
+    import dj_database_url
     from os import environ
     GEOS_LIBRARY_PATH = "{}/libgeos_c.so".format(environ.get('GEOS_LIBRARY_PATH'))
     GDAL_LIBRARY_PATH = "{}/libgdal.so".format(environ.get('GDAL_LIBRARY_PATH'))
