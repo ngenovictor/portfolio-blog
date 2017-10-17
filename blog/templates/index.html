@@ -17,75 +17,92 @@
 		</div>
 	</header>
 
-<!-- Portfolio Grid Section -->
-        <section id="portfolio">
-          <div class="container">
-            <h2 class="text-center">Portfolio</h2>
-            <hr class="star-primary">
-            <div class="row portfolio_row">
-              <div class="col-sm-4 portfolio-item">
-                <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal">
-                  <div class="caption">
-                    <div class="caption-content">
-                      <i class="fa fa-search-plus fa-3x"></i>
-                    </div>
-                  </div>
-                  <img class="img-fluid" src="{% static 'img/mlo-safi.png' %}" alt="">
-                </a>
-              </div>
-              <div class="col-sm-4 portfolio-item">
-                <a class="portfolio-link" href="#portfolioModal2" data-toggle="modal">
-                  <div class="caption">
-                    <div class="caption-content">
-                      <i class="fa fa-search-plus fa-3x"></i>
-                    </div>
-                  </div>
-                  <img class="img-fluid" src="{% static 'img/cake.png' %}" alt="">
-                </a>
-              </div>
-              <div class="col-sm-4 portfolio-item">
-                <a class="portfolio-link" href="#portfolioModal3" data-toggle="modal">
-                  <div class="caption">
-                    <div class="caption-content">
-                      <i class="fa fa-search-plus fa-3x"></i>
-                    </div>
-                  </div>
-                  <img class="img-fluid" src="{% static 'img/circus.png' %}" alt="">
-                </a>
-              </div>
-              <div class="col-sm-4 portfolio-item">
-                <a class="portfolio-link" href="#portfolioModal4" data-toggle="modal">
-                  <div class="caption">
-                    <div class="caption-content">
-                      <i class="fa fa-search-plus fa-3x"></i>
-                    </div>
-                  </div>
-                  <img class="img-fluid" src="{% static 'img/game.png' %}" alt="">
-                </a>
-              </div>
-              <div class="col-sm-4 portfolio-item">
-                <a class="portfolio-link" href="#portfolioModal5" data-toggle="modal">
-                  <div class="caption">
-                    <div class="caption-content">
-                      <i class="fa fa-search-plus fa-3x"></i>
-                    </div>
-                  </div>
-                  <img class="img-fluid" src="{% static 'img/safe.png' %}" alt="">
-                </a>
-              </div>
-              <div class="col-sm-4 portfolio-item">
-                <a class="portfolio-link" href="#portfolioModal6" data-toggle="modal">
-                  <div class="caption">
-                    <div class="caption-content">
-                      <i class="fa fa-search-plus fa-3x"></i>
-                    </div>
-                  </div>
-                  <img class="img-fluid" src="{% static 'img/submarine.png' %}" alt="">
-                </a>
+  <!-- Portfolio Grid Section -->
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="text-center">Portfolio</h2>
+      <hr class="star-primary">
+      <div class="row portfolio_row">
+        <!-- portfolio item 1 #mlosafi -->
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="icon-javascript-alt fa-3x"></i>
+                <i class="fa fa-comments fa-3x" aria-hidden="true"></i>
+                <i class="fa fa-globe fa-3x" aria-hidden="true"></i>
+
               </div>
             </div>
-          </div>
-        </section>
+            <img class="img-fluid" src="{% static 'img/mlo-safi.png' %}" alt="">
+          </a>
+        </div>
+        <!-- poortfolio item 2 #geohub -->
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal2" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="icon-python fa-3x"></i>
+                <i class="fa fa-map fa-3x" aria-hidden="true"></i>
+                <i class="icon-postgres fa-3x"></i>
+                <i class="fa fa-globe fa-3x" aria-hidden="true"></i>                
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/geoportal_pic.png' %}" alt="">
+          </a>
+        </div>
+        <!-- poortfolio item 3 #newsdelivery-->
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal3" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                  <i class="icon-java-bold fa-3x" aria-hidden="true"></i>
+                  <i class="fa fa-android fa-3x" aria-hidden="true"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/news_delivery.jpg' %}" alt="">
+          </a>
+        </div>
+        <!-- poortfolio item #sportswift -->
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal4" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                  <i class="icon-html5-alt fa-3x"></i>
+                  <i class="icon-css3-alt fa-3x"></i>
+                  <i class="icon-javascript-alt fa-3x"></i>
+                  <i class="fa fa-globe fa-3x" aria-hidden="true"></i> 
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/sports_swift.png' %}" alt="">
+          </a>
+        </div>
+        <!-- poortfolio item 5 -->
+        <!-- <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal5" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/safe.png' %}" alt="">
+          </a>
+        </div> -->
+        <!-- poortfolio item 6 -->
+        <!-- <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal6" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/submarine.png' %}" alt="">
+          </a>
+        </div> -->
+        <!-- end portfolio items -->
+      </div>
+    </div>
+  </section>
 
 
 
@@ -190,6 +207,7 @@
 
 	<!-- Portfolio Modals -->
 <!-- Portfolio Modals -->
+<!-- portfolio one #mlosafi -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -215,19 +233,146 @@
                                 </li>
                             </ul>
                             <ul class="list-inline item-details">
-                                <li>Date:
+                                <li>Github Repository:
                                     <strong>
-                                        <a href="#">July 2017</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong>
-                                        <a href="#">Restaurant Management</a>
+                                        <a href="https://github.com/ngenovictor/mlo-safi" target="_blank">ngenovictor/mlo-safi</a>
                                     </strong>
                                 </li>
                                 <li>Website Link:
                                     <strong>
                                         <a href="https://mlo-safi.netlify.com/" target="_blank">Mlo-Safi</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- portfolio one #Geohub -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Geo Portal</h2>
+                            <hr class="star-primary">
+                            <img src="{% static 'img/geoportal_pic.png' %}" class="img-responsive img-centered" alt="">
+                            <p></p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Tech Used:
+                                    <strong>
+                                        <a href="#">Python</a>, <a href="#">Django</a>, <a href="#">PostgreSQL</a>, <a href="#">GIS</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <ul class="list-inline item-details">
+                                <li>Github Repository:
+                                    <strong>
+                                        <a href="https://geohub-geoportal.herokuapp.com/data/" target="_blank">Geo-Hub/geoportal</a>
+                                    </strong>
+                                </li>
+                                <li>Website Link:
+                                    <strong>
+                                        <a href="https://geohub-geoportal.herokuapp.com/" target="_blank">Geo Portal</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- portfolio one #NewsDelivery -->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>News Delivery</h2>
+                            <hr class="star-primary">
+                            <img src="{% static 'img/news_delivery_2.jpg' %}" class="img-responsive img-centered" alt="">
+                            <p></p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Tech Used:
+                                    <strong>
+                                        <a href="#">Java</a>, <a href="#">Android</a>, <a href="#">News Api</a>, <a href="#">FireBase Storage</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <ul class="list-inline item-details">
+                                <li>Github Repository:
+                                    <strong>
+                                        <a href="https://github.com/ngenovictor/newsdelivery" target="_blank">ngenovictor/newsdelivery</a>
+                                    </strong>
+                                </li>
+                                <li>Play Store Link:
+                                    <strong>
+                                        <a href="https://play.google.com/store/apps/details?id=com.veekay.newsdelivery" target="_blank">News Delivery</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- portfolio one #SportSwift -->
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Sports Swift</h2>
+                            <hr class="star-primary">
+                            <img src="{% static 'img/sports_swift.png' %}" class="img-responsive img-centered" alt="">
+                            <p></p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Tech Used:
+                                    <strong>
+                                        <a href="#">HTML 5</a>, <a href="#">CSS 3</a>, <a href="#">JavaScript</a>, <a href="#">Open Weather API</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <ul class="list-inline item-details">
+                                <li>Github Repository:
+                                    <strong>
+                                        <a href="https://github.com/ngenovictor/sportswebsite" target="_blank">ngenovictor/sportswebsite</a>
+                                    </strong>
+                                </li>
+                                <li>Play Store Link:
+                                    <strong>
+                                        <a href="https://ngenovictor.github.io/sportswebsite/" target="_blank">Sports Swift</a>
                                     </strong>
                                 </li>
                             </ul>
