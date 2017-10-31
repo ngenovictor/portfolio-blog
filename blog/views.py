@@ -35,3 +35,9 @@ def view_blog_site(request):
         "title": "Veekay Blog"
     }
     return render(request, template, context)
+def journey(request):
+    template = "journey.html"
+    context = {
+        "title": "Journey"
+    }
+    return render(request, template, context)
