@@ -1,6 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +17,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{% static 'favicons/apple-icon-144x144.png' %}">
     <link rel="apple-touch-icon" sizes="152x152" href="{% static 'favicons/apple-icon-152x152.png' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-icon-180x180.png' %}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'favicons/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicons/android-icon-192x192.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicons/favicon-96x96.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
@@ -35,13 +36,15 @@
     <link rel="stylesheet" href="{% static 'css/font-mfizz/font-mfizz.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
+
 <body id="page-top">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle navigation</span> Menu
+                    <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="/">Ng'eno</a>
             </div>
@@ -49,80 +52,104 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden"><a href="#page-top"></a></li>
-                    <li class="js-scroll-trigger"><a href="#portfolio">Portfolio</a></li>
-                    <li class="js-scroll-trigger"><a href="#about">About</a></li>
-                    <li class="js-scroll-trigger"><a href="#contact">Contact</a></li>
-                    <li><a href="{% url 'journey' %}">Journey</a></li>
-                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="js-scroll-trigger">
+                        <a href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="js-scroll-trigger">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="js-scroll-trigger">
+                        <a href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'journey' %}">Journey</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'blog' %}">Blog</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-{% block main_content %}
-
-{% endblock main_content %}
+    {% block main_content %} {% endblock main_content %}
 
     <!-- Footer -->
-	<footer class="text-center">
-		<div class="footer-above">
-			<div class="container">
-				<div class="row">
-					<div class="footer-col col-md-4">
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
                         <h3>Location</h3>
-						<p>Nairobi, Kenya</p>
-					</div>
-					<div class="footer-col col-md-4">
-						<h3>Around the Web</h3>
-						<ul class="list-inline">
-							<li>
-								<a href="https://plus.google.com/+VictorNgeno321" class="btn-social btn-outline"><span class="sr-only">Google Plus</span><i class="fa fa-fw fa-google-plus"></i></a>
-							</li>
-							<li>
-								<a href="https://twitter.com/veekay254" class="btn-social btn-outline"><span class="sr-only">Twitter</span><i class="fa fa-fw fa-twitter"></i></a>
-							</li>
-							<li>
-								<a href="https://www.linkedin.com/in/ngenovictor/" class="btn-social btn-outline"><span class="sr-only">Linked In</span><i class="fa fa-fw fa-linkedin"></i></a>
-							</li>
-						</ul>
-					</div>
-					<div class="footer-col col-md-4">
-						<h3>Message</h3>
-						<p>Feel free to contact me, leave a feedback of anything and share your thoughts.  </p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="footer-below">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						Copyright &copy; <a href="/">Veekay254</a> 2017
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+                        <p>Nairobi, Kenya</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://plus.google.com/+VictorNgeno321" class="btn-social btn-outline">
+                                    <span class="sr-only">Google Plus</span>
+                                    <i class="fa fa-fw fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/veekay254" class="btn-social btn-outline">
+                                    <span class="sr-only">Twitter</span>
+                                    <i class="fa fa-fw fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/ngenovictor/" class="btn-social btn-outline">
+                                    <span class="sr-only">Linked In</span>
+                                    <i class="fa fa-fw fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Message</h3>
+                        <p>Feel free to contact me, leave a feedback of anything and share your thoughts. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy;
+                        <a href="/">Veekay254</a> 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-	<div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-		<a class="btn btn-primary" href="#page-top">
-			<i class="fa fa-chevron-up"></i>
-		</a>
-	</div>
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
 
 
 
-<!-- Scripts at the bottom of page so it loads faster -->
-	<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+    <!-- Scripts at the bottom of page so it loads faster -->
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
 </body>
-</html></title>
+
+</html>
+</title>
 </head>
+
 <body>
 
 </body>
+
 </html>
