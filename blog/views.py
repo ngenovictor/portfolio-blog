@@ -18,7 +18,7 @@ def contact(request):
     message = request.POST.get("message")
     if name and email_address and message:
         mail.send_mail(
-            subject="Contact from Personal Site",
+            subject="Contact from Personal Site - {0}".format(name),
             from_email=email_address,
             recipient_list=[settings.EMAIL_HOST_USER, 'ngenovictor321@gmail.com'],
             fail_silently=False,
