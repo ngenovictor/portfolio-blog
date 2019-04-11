@@ -137,7 +137,7 @@ MANAGERS = ADMINS
 try:
     from .local_settings import SECRET_KEY, DATABASES, EMAIL_HOST_PASSWORD
     #define local developments settings
-    DEBUG = True
+    DEBUG = False
     SECRET_KEY = SECRET_KEY
     DATABASES = DATABASES
     EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
