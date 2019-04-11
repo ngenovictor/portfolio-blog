@@ -145,7 +145,7 @@ try:
 except ImportError:
     #means the local_settings file is not deployed online
     #production settings are defined here
-    DEBUG = False
+    DEBUG = True
     import dj_database_url
     from os import environ
 
