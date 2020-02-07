@@ -2,14 +2,17 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.core import mail
 from django.conf import settings
+from django.views.generic import TemplateView, ListView
 
+from .models import Post
 
-def index(request):
-    template = "index.html"
-    context = {
-        "title":"Home"
-    }
-    return render(request, template, context)
+class IndexView(TemplateView):
+    template_name = "index.html"
+
+class BlogView(ListView):
+    model = Post
+    context_object_name = 'posts'
+    template_name = "blog.html"
 
 
 def contact(request):
@@ -28,13 +31,6 @@ def contact(request):
     else:
         return JsonResponse({"message": "error"})
 
-
-def view_blog_site(request):
-    template = "blog.html"
-    context = {
-        "title": "Veekay Blog"
-    }
-    return render(request, template, context)
 def journey(request):
     template = "journey.html"
     context = {
