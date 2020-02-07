@@ -137,7 +137,7 @@ MANAGERS = ADMINS
 try:
     from .local_settings import SECRET_KEY, DATABASES, EMAIL_HOST_PASSWORD
     #define local developments settings
-    DEBUG = False
+    DEBUG = True
     SECRET_KEY = SECRET_KEY
     DATABASES = DATABASES
     EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
@@ -145,7 +145,7 @@ try:
 except ImportError:
     #means the local_settings file is not deployed online
     #production settings are defined here
-    DEBUG = True
+    DEBUG = False
     import dj_database_url
     from os import environ
 
