@@ -10,6 +10,7 @@ class Post(models.Model):
     image = models.TextField()
     summary = models.TextField()
     content = models.TextField()
+    draft = models.BooleanField(default=True)
     date_created = models.TimeField(auto_now_add=True)
     date_updated = models.TimeField(auto_now=True)
 
