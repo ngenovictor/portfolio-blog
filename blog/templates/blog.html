@@ -5,13 +5,15 @@
         <div class="col-vc-7">
         {% if posts %}
             {% for post in posts %}
-                <div>
-                    <h1>{{ post.title }}</h1>
-                    <p>{{ post.date_created }}</p>
-                    <img src="{{ post.image }}" alt="{{ post.title }}" width="100%">
-                    <h3>{{ post.summary }}</h3>
-                    <p class="content-markdown">{{ post.content }}</p>
-                </div>
+                {% if not post.draft %}
+                    <div>
+                        <h1>{{ post.title }}</h1>
+                        <p>{{ post.date_created }}</p>
+                        <img src="{{ post.image }}" alt="{{ post.title }}" width="100%">
+                        <h3>{{ post.summary }}</h3>
+                        <p class="content-markdown">{{ post.content }}</p>
+                    </div>
+                {% endif %}
             {% endfor %}
         {% else %}
             <p>Watch out for posts later</p>
