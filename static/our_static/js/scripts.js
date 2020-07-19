@@ -87,8 +87,6 @@
                         $("p#contact_message").append("Thank you for contacting me. There was an error on our side. Please contact me on <a href='mailto:ngenovictor321@gmail.com'>Email</a>");
                         $("#message_send_feedback").modal("show");
                     }
-
-                    console.log(message);
                 }
             });
         });
@@ -130,8 +128,6 @@
                         $("p#contact_message").append("Thank you for contacting me. There was an error on our side. Please contact me on <a href='mailto:ngenovictor321@gmail.com'>Email</a>");
                         $("#blog_message_send_feedback").modal("show");
                     }
-
-                    console.log(message);
                 }
             });
         });
