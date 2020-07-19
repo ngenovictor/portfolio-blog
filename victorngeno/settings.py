@@ -124,34 +124,34 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media_root")
 
 # email settings
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'mailappvictor@gmail.com' #my gmail username
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "Victor <mailappvictor@gmail.com>"
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'victor@mail.victorngeno.com'
+DEFAULT_FROM_EMAIL = f"Victor <{EMAIL_HOST_USER}>"
 
 ADMINS = [('Victor', EMAIL_HOST_USER)]
 MANAGERS = ADMINS
 
 try:
-    from .local_settings import SECRET_KEY, DATABASES, EMAIL_HOST_PASSWORD
-    #define local developments settings
+    from .local_settings import SECRET_KEY, DATABASES, EMAIL_HOST, EMAIL_HOST_PASSWORD
+    # define local developments settings
     DEBUG = True
     SECRET_KEY = SECRET_KEY
     DATABASES = DATABASES
+    EMAIL_HOST = EMAIL_HOST
     EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 
 except ImportError:
-    #means the local_settings file is not deployed online
-    #production settings are defined here
+    # means the local_settings file is not deployed online
+    # production settings are defined here
     DEBUG = False
     import dj_database_url
-    from os import environ
 
     SECRET_KEY = os.environ.get('SECRET_KEY', '')
     db_from_env = dj_database_url.config()
     DATABASES = {'default': dj_database_url.config()}
     DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # my gmail password
+    EMAIL_HOST = os.environ.get('EMAIL_HOST')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
