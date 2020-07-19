@@ -22,9 +22,8 @@ def contact(request):
     name = request.POST.get("name")
     email_address = request.POST.get("email_address")
     message = request.POST.get("message")
-    message = email_address + "\n\n" + message
-    print(name, email_address, message)
     if name and email_address and message:
+        message = email_address + "\n\n" + message
         msg = EmailMessage(
             f"Contact from Personal Site - {name}",
             message,
