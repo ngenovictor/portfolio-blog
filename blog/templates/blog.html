@@ -5,9 +5,9 @@
         <div class="col-vc-7">
         {% if posts %}
             {% for post in posts %}
-                {% if not post.draft %}
+                {% if not post.draft or user.is_superuser %}
                     <div>
-                        <h1>{{ post.title }}</h1>
+                        <h1>{% if user.is_superuser %}<span style="color: red; background-color: black;">[DRAFT]</span>{% endif %}{{ post.title }}</h1>
                         <p>{{ post.date_created }}</p>
                         <img src="{{ post.image }}" alt="{{ post.title }}" width="100%">
                         <h3>{{ post.summary }}</h3>
