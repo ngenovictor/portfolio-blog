@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  nginx:
+    restart: on-failure
+    build: ./nginx
+    ports:
+      - "0.0.0.0:80:80"
+
+  web:
+    restart: on-failure
+    build: ./web
+    expose:
+      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:8001:8001"
