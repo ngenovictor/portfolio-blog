@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['localhost', 'veekay.herokuapp.com', 'www.victorngeno.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'veekay.herokuapp.com', 'www.victorngeno.com', '139.162.243.214']
 
 
 # Application definition
@@ -133,12 +133,18 @@ DEFAULT_FROM_EMAIL = f"Victor <{EMAIL_HOST_USER}>"
 ADMINS = [('Victor', EMAIL_HOST_USER)]
 MANAGERS = ADMINS
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'blog_db.db'),
+    }
+}
+
 try:
-    from .local_settings import SECRET_KEY, DATABASES, EMAIL_HOST, EMAIL_HOST_PASSWORD
+    from .local_settings import SECRET_KEY, EMAIL_HOST, EMAIL_HOST_PASSWORD
     # define local developments settings
     DEBUG = True
     SECRET_KEY = SECRET_KEY
-    DATABASES = DATABASES
     EMAIL_HOST = EMAIL_HOST
     EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 
@@ -146,12 +152,7 @@ except ImportError:
     # means the local_settings file is not deployed online
     # production settings are defined here
     DEBUG = False
-    import dj_database_url
 
-    SECRET_KEY = os.environ.get('SECRET_KEY', '')
-    db_from_env = dj_database_url.config()
-    DATABASES = {'default': dj_database_url.config()}
-    DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-
+    SECRET_KEY = os.environ.get('PORTFOLIO_BLOG_SECRET_KEY', '')
     EMAIL_HOST = os.environ.get('EMAIL_HOST')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
