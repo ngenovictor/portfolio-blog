@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: ./build/nginx/Dockerfile
     ports:
-      - "8001:80"  # map local port 8001 to the services port 80
+      - "0.0.0.0:8001:80"  # map local port 8001 to the services port 80
 
   web:
     restart: on-failure
