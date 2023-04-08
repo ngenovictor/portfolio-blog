@@ -154,6 +154,6 @@ except ImportError:
     DEBUG = False
     import dj_database_url
 
-    SECRET_KEY = os.environ.get('SECRET_KEY', '')
+    SECRET_KEY = os.environ.get('PORTFOLIO_BLOG_SECRET_KEY', '')
     EMAIL_HOST = os.environ.get('EMAIL_HOST')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
