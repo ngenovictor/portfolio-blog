@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['localhost', 'veekay.herokuapp.com', 'www.victorngeno.com']
+ALLOWED_HOSTS = ['localhost', 'veekay.herokuapp.com', 'www.victorngeno.com', '139.162.243.214']
 
 
 # Application definition
@@ -152,7 +152,6 @@ except ImportError:
     # means the local_settings file is not deployed online
     # production settings are defined here
     DEBUG = False
-    import dj_database_url
 
     SECRET_KEY = os.environ.get('PORTFOLIO_BLOG_SECRET_KEY', '')
     EMAIL_HOST = os.environ.get('EMAIL_HOST')
