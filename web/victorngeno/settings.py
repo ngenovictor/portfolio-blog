@@ -133,12 +133,18 @@ DEFAULT_FROM_EMAIL = f"Victor <{EMAIL_HOST_USER}>"
 ADMINS = [('Victor', EMAIL_HOST_USER)]
 MANAGERS = ADMINS
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'blog_db.db'),
+    }
+}
+
 try:
-    from .local_settings import SECRET_KEY, DATABASES, EMAIL_HOST, EMAIL_HOST_PASSWORD
+    from .local_settings import SECRET_KEY, EMAIL_HOST, EMAIL_HOST_PASSWORD
     # define local developments settings
     DEBUG = True
     SECRET_KEY = SECRET_KEY
-    DATABASES = DATABASES
     EMAIL_HOST = EMAIL_HOST
     EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 
@@ -149,9 +155,5 @@ except ImportError:
     import dj_database_url
 
     SECRET_KEY = os.environ.get('SECRET_KEY', '')
-    db_from_env = dj_database_url.config()
-    DATABASES = {'default': dj_database_url.config()}
-    DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-
     EMAIL_HOST = os.environ.get('EMAIL_HOST')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')

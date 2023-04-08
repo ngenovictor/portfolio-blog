@@ -3,13 +3,21 @@ version: '3'
 services:
   nginx:
     restart: on-failure
-    build: ./nginx
+    build:
+      context: .
+      dockerfile: ./build/nginx/Dockerfile
     ports:
       - "0.0.0.0:80:80"
 
   web:
     restart: on-failure
-    build: ./web
-    expose:
-      - "127.0.0.1:8000:8000"
-      - "127.0.0.1:8001:8001"
+    build:
+      dockerfile: ./build/web/Dockerfile
+      context: .
+    # expose:
+    #   - "127.0.0.1:8000:8000"
+    #   - "127.0.0.1:8001:8001"
+    # expose:
+    #   - 8001
+    ports:
+      - 8001:8001

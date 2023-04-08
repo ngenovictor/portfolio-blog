@@ -1,8 +1,8 @@
-victorngeno/local_settings.py
+**/local_settings.py
 *.pyc
 
 __pycache__
-db.sqlite3
+**/db.sqlite3
 venv
 .vscode
 .idea
