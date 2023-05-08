@@ -6,8 +6,6 @@ services:
     build:
       context: .
       dockerfile: ./build/nginx/Dockerfile
-    volumes:
-      - /root/web_cerificates:/root/web_cerificates
     ports:
       - "0.0.0.0:8001:80"  # map local port 8001 to the services port 80
 
@@ -20,3 +18,5 @@ services:
       - PORTFOLIO_BLOG_SECRET_KEY=$PORTFOLIO_BLOG_SECRET_KEY
     expose:
       - 8000  # export django serving port to the service network
+    ports:
+      - "0.0.0.0:8001:8000"  # map local port 8001 to the services port 80
