@@ -6,8 +6,6 @@ services:
     build:
       context: .
       dockerfile: ./build/nginx/Dockerfile
-    volumes:
-      - /root/web_cerificates:/root/web_cerificates
     ports:
       - "0.0.0.0:8001:80"  # map local port 8001 to the services port 80
 
