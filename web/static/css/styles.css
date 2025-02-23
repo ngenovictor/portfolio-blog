@@ -1,3 +1,6 @@
+html,body {
+  height: 100%;
+}
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: hidden;
@@ -178,17 +181,54 @@ hr.star-primary:before {
 }
 
 header {
-  padding-top: 16%;
+  /* padding-top: 16%; */
+  height: 100%;
   text-align: center;
   background: #18BC9C;
   color: white;
+  margin-top: 100px;
+  margin-bottom: -100px;
+}
+header .about-text{
+  padding: 20px;
+}
+header a {
+  color: white;
+  background-color: #2C3E50;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: large;
+
+}
+@media (max-width: 768px) {
+  /* mobile styles */
+  header {
+    margin-top: 50px;
+    margin-bottom: -50px;
+  }
+  header .intro{
+    flex-direction: column;
+  }
 }
 
 header .container {
   padding-top: 100px;
   padding-bottom: 50px;
 }
-
+header .intro{
+  /* aligng children hozrintolly to center */
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+header .intro-text{
+  /* border: ; */
+  border:5px solid white;
+  padding: 10px;
+}
 header .intro-text .name {
   display: block;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -203,11 +243,6 @@ header .intro-text .skills {
 }
 
 @media (min-width: 768px) {
-  header .container {
-    padding-top: 200px;
-    padding-bottom: 100px;
-  }
-
   header .intro-text .name {
     font-size: 4.75em;
   }
@@ -222,9 +257,7 @@ header .intro-text .skills {
 
 
 
-header {
-  padding: 100px 0;
-}
+
 
 section {
   padding: 100px 0;
@@ -252,20 +285,14 @@ section#about {
 
 
 section#contact {
-  /*background: #18BC9C;*/
-  /*color:;*/
-}
-.about-content{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: red;
+  /* background: #18BC9C;
+  color: white; */
 }
 
 /*For the portfolio*/
 section#portfolio {
-  background: #18BC9C;
-  color: white;
+  background: white;
+  color: #18BC9C;
 }
 
 .portfolio_row {
