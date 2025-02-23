@@ -255,7 +255,12 @@ section#contact {
   /*background: #18BC9C;*/
   /*color:;*/
 }
-
+.about-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
 
 /*For the portfolio*/
 section#portfolio {
