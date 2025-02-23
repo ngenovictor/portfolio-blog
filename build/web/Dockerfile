@@ -7,8 +7,11 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./web .
 
+COPY ./build/web/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-RUN python manage.py migrate
+COPY ./build/web/run_app.sh run_app.sh
+RUN chmod +x run_app.sh
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "victorngeno.wsgi"]
+# run run_app.sh as entry point
+ENTRYPOINT [ "/bin/bash", "run_app.sh" ]
