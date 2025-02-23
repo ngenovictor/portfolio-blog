@@ -8,6 +8,7 @@ services:
       context: .
     environment:
       - PORTFOLIO_BLOG_SECRET_KEY=$PORTFOLIO_BLOG_SECRET_KEY
+      - PORTFOLIO_BLOG_DEBUG=$PORTFOLIO_BLOG_DEBUG
     expose:
       - 8000 # export django serving port to the service network
     ports:
