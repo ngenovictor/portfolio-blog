@@ -14,6 +14,9 @@ services:
       - "0.0.0.0:8001:8000" # map local port 8001 to the services port 80
     develop:
       watch:
-        - path: ./web
+        - action: sync
+          path: ./web
           target: /root/app/
-          action: sync
+
+        - action: rebuild
+          path: ./build/web/requirments.txt
