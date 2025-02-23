@@ -18,6 +18,24 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+try:
+    from .local_settings import EMAIL_HOST, EMAIL_HOST_PASSWORD, SECRET_KEY
+
+    # define local developments settings
+    DEBUG = True
+    SECRET_KEY = SECRET_KEY
+    EMAIL_HOST = EMAIL_HOST
+    EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+
+except ImportError:
+    # means the local_settings file is not deployed online
+    # production settings are defined here
+    DEBUG = False
+
+    SECRET_KEY = os.environ.get("PORTFOLIO_BLOG_SECRET_KEY", "")
+    EMAIL_HOST = os.environ.get("EMAIL_HOST")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+
 
 ALLOWED_HOSTS = [
     "veekay.herokuapp.com",
