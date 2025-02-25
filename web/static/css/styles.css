@@ -182,12 +182,13 @@ hr.star-primary:before {
 
 header {
   /* padding-top: 16%; */
-  height: 100%;
+  display: flex;
+  min-height: 100%;
   text-align: center;
   background: #18BC9C;
   color: white;
   margin-top: 100px;
-  margin-bottom: -100px;
+  /* margin-bottom: -100px; */
 }
 header .about-text{
   padding: 20px;
@@ -205,7 +206,7 @@ header a {
   /* mobile styles */
   header {
     margin-top: 50px;
-    margin-bottom: -50px;
+    /* margin-bottom: -50px; */
   }
   header .intro{
     flex-direction: column;
