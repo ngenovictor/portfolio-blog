@@ -10,12 +10,12 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # create a virtual env
-RUN virtualenv venv
-RUN source venv/bin/activate
+RUN python3 -m venv venv
+RUN . venv/bin/activate
 
 # install python requirements
 COPY ./build/web/requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+RUN venv/bin/pip install -r requirements.txt
 
 COPY ./build/web/run_app.sh run_app.sh
 RUN chmod +x run_app.sh
