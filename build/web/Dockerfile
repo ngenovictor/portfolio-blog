@@ -11,7 +11,6 @@ ENV PYTHONUNBUFFERED 1
 
 # create a virtual env
 RUN python3 -m venv venv
-RUN . venv/bin/activate
 
 # install python requirements
 COPY ./build/web/requirements.txt requirements.txt
