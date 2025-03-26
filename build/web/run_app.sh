@@ -15,5 +15,5 @@ if [ "$PORTFOLIO_BLOG_DEBUG" = "True" ]; then
 else
     # Start Gunicorn processes
     echo "Starting Gunicorn."
-    exec gunicorn --bind 0.0.0.0:8000 victorngeno.wsgi
+    exec venv/bin/python -m gunicorn --bind 0.0.0.0:8000 victorngeno.wsgi
 fi
