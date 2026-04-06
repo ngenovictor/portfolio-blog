@@ -9,7 +9,7 @@
         <div>
             <h1>{% if user.is_superuser %}<span
                     style="color: red; background-color: black;">[DRAFT]</span>{% endif %}<a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h1>
-            <p>{{ post.date_created }}</p>
+            <p>{{ post.date_created|date:"N j, Y" }}</p>
             <img src="{{ post.image }}" alt="{{ post.title }}" width="100%">
             <h3>{{ post.summary }}</h3>
         </div>

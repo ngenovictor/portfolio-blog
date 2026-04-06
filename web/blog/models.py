@@ -12,8 +12,8 @@ class Post(models.Model):
     summary = models.TextField()
     content = models.TextField()
     draft = models.BooleanField(default=True)
-    date_created = models.TimeField(auto_now_add=True)
-    date_updated = models.TimeField(auto_now=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
