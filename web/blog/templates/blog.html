@@ -18,6 +18,19 @@
         {% else %}
         <p>Watch out for posts later 😊</p>
         {% endif %}
+        {% if is_paginated %}
+        <nav>
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a></li>
+                {% endif %}
+                <li class="disabled"><span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">Next &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
     </div>
     <div class="col-vc-3">
         <!--Summary of content will appear here-->

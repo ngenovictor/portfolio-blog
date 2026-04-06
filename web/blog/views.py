@@ -16,6 +16,7 @@ class BlogView(ListView):
     model = Post
     context_object_name = 'posts'
     template_name = "blog.html"
+    paginate_by = 20
 
 
 class PostDetailView(DetailView):
