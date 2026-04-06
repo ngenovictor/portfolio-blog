@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_content %}
+<section id="post-detail" class="main_content">
+    <div class="col-vc-7">
+        {% if not post.draft or user.is_superuser %}
+        <div>
+            <h1>{% if user.is_superuser and post.draft %}<span
+                    style="color: red; background-color: black;">[DRAFT]</span>{% endif %}</h1>
+            <p class="content-markdown">{{ post.content }}</p>
+        </div>
+        {% else %}
+        <p>Post not found.</p>
+        {% endif %}
+        <a href="{% url 'blog' %}">&larr; Back to blog</a>
+    </div>
+    <div class="col-vc-3">
+        <!--Summary of content will appear here-->
+    </div>
+</section>
+{% endblock main_content %}

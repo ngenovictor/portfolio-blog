@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.core import mail
 from django.conf import settings
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.core.mail import EmailMessage
 
 from .models import Post
@@ -16,6 +16,12 @@ class BlogView(ListView):
     model = Post
     context_object_name = 'posts'
     template_name = "blog.html"
+
+
+class PostDetailView(DetailView):
+    model = Post
+    context_object_name = 'post'
+    template_name = "post_detail.html"
 
 
 def contact(request):

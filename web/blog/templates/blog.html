@@ -8,11 +8,10 @@
         {% if not post.draft or user.is_superuser %}
         <div>
             <h1>{% if user.is_superuser %}<span
-                    style="color: red; background-color: black;">[DRAFT]</span>{% endif %}{{ post.title }}</h1>
+                    style="color: red; background-color: black;">[DRAFT]</span>{% endif %}<a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h1>
             <p>{{ post.date_created }}</p>
             <img src="{{ post.image }}" alt="{{ post.title }}" width="100%">
             <h3>{{ post.summary }}</h3>
-            <p class="content-markdown">{{ post.content }}</p>
         </div>
         {% endif %}
         {% endfor %}
