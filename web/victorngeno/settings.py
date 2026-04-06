@@ -43,6 +43,10 @@ ALLOWED_HOSTS = [
     "139.162.243.214",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://www.victorngeno.com",
+]
+
 if DEBUG:
     ALLOWED_HOSTS.extend(
         [
