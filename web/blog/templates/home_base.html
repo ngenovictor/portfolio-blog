@@ -6,8 +6,26 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="portfolio">
-        <meta name="author" content="Victor Ngeno">
+        <meta name="author" content="Victor Ng'eno">
+
+        {% block seo %}
+        <meta name="description" content="Victor Ng'eno — Senior Software Engineer available for employment. Specializing in Web, Mobile and GIS development. Based in Nairobi, Kenya.">
+        <meta name="keywords" content="Victor Ngeno, Software Engineer, Web Developer, GIS, Python, Django, Flutter, available for employment, Nairobi Kenya">
+        <meta name="robots" content="index, follow">
+        <meta property="og:type" content="profile">
+        <meta property="og:site_name" content="Victor Ng'eno">
+        <meta property="og:title" content="Victor Ng'eno — Software Engineer | Available for Employment">
+        <meta property="og:description" content="Senior Software Engineer specializing in Web, Mobile and GIS development. Available for employment. Based in Nairobi, Kenya.">
+        <meta property="og:url" content="https://www.victorngeno.com/">
+        <meta property="profile:first_name" content="Victor">
+        <meta property="profile:last_name" content="Ng'eno">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@veekay254">
+        <meta name="twitter:title" content="Victor Ng'eno — Software Engineer | Available for Employment">
+        <meta name="twitter:description" content="Senior Software Engineer specializing in Web, Mobile and GIS development. Available for employment.">
+        <link rel="canonical" href="https://www.victorngeno.com/">
+        {% endblock seo %}
+
         <link rel="apple-touch-icon" sizes="57x57" href="{% static 'favicons/apple-icon-57x57.png' %}">
         <link rel="apple-touch-icon" sizes="60x60" href="{% static 'favicons/apple-icon-60x60.png' %}">
         <link rel="apple-touch-icon" sizes="72x72" href="{% static 'favicons/apple-icon-72x72.png' %}">
@@ -28,7 +46,7 @@
         <meta name="theme-color" content="#ffffff">
 
         <!--My stuff starts here-->
-        <title>Victor</title>
+        <title>Victor Ng'eno — Software Engineer</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -159,13 +177,5 @@
             ga('send', 'pageview');
         </script>
     </body>
-
-</html>
-</title>
-</head>
-
-<body>
-
-</body>
 
 </html>
