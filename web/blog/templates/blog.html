@@ -1,27 +1,61 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block title %}Blog — Victor Ng'eno{% endblock %}
+
+{% block seo %}
+<meta name="description" content="Technical blog by Victor Ng'eno — articles on software development, GIS, Python, Django, Flutter and more.">
+<meta name="keywords" content="Victor Ngeno blog, software development, Python, Django, GIS, Flutter, technical articles">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="blog">
+<meta property="og:site_name" content="Victor Ng'eno">
+<meta property="og:title" content="Blog — Victor Ng'eno">
+<meta property="og:description" content="Technical blog by Victor Ng'eno — articles on software development, GIS, Python, Django, Flutter and more.">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@veekay254">
+<meta name="twitter:title" content="Blog — Victor Ng'eno">
+<meta name="twitter:description" content="Technical blog by Victor Ng'eno — articles on software development, GIS, Python, Django, Flutter and more.">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+{% endblock seo %}
+
 {% block main_content %}
-<section id="blog" class="main_content">
-    <div class="col-vc-7">
+<section id="blog" class="blog-list">
+    <div class="blog-list-container">
         {% if posts %}
         {% for post in posts %}
         {% if not post.draft or user.is_superuser %}
-        <div>
-            <h1>{% if user.is_superuser %}<span
-                    style="color: red; background-color: black;">[DRAFT]</span>{% endif %}{{ post.title }}</h1>
-            <p>{{ post.date_created }}</p>
-            <img src="{{ post.image }}" alt="{{ post.title }}" width="100%">
-            <h3>{{ post.summary }}</h3>
-            <p class="content-markdown">{{ post.content }}</p>
-        </div>
+        <article class="blog-card">
+            <a href="{% url 'post_detail' post.slug %}">
+                <img src="{{ post.image }}" alt="{{ post.title }}" class="blog-card-image">
+            </a>
+            <div class="blog-card-body">
+                <h2 class="blog-card-title">
+                    {% if user.is_superuser and post.draft %}<span class="draft-label">[DRAFT]</span>{% endif %}
+                    <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
+                </h2>
+                <p class="blog-card-date">{{ post.date_created|date:"N j, Y" }}</p>
+                <p class="blog-card-summary">{{ post.summary }}</p>
+            </div>
+        </article>
         {% endif %}
         {% endfor %}
         {% else %}
         <p>Watch out for posts later 😊</p>
         {% endif %}
-    </div>
-    <div class="col-vc-3">
-        <!--Summary of content will appear here-->
+        {% if is_paginated %}
+        <nav>
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a></li>
+                {% endif %}
+                <li class="disabled"><span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">Next &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
     </div>
 </section>
 {% endblock main_content %}
