@@ -727,6 +727,33 @@ fieldset[disabled] .btn-success.active {
   }
 }
 
+/* blog post detail */
+.post-detail {
+  padding: 100px 2em 4em;
+}
+
+.post-detail-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.post-detail-container .content-markdown {
+  font-size: 1.05em;
+  line-height: 1.8;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2em;
+  font-size: 0.95em;
+}
+
+@media (max-width: 768px) {
+  .post-detail {
+    padding: 80px 1.25em 3em;
+  }
+}
+
 /* blog styles */
 #blog {
   width: 100%;

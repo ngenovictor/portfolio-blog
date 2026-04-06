@@ -49,21 +49,17 @@
 {% endblock structured_data %}
 
 {% block main_content %}
-<section id="post-detail" class="main_content">
-    <div class="col-vc-7">
+<section id="post-detail" class="post-detail">
+    <div class="post-detail-container">
         {% if not post.draft or user.is_superuser %}
-        <div>
-            <h1>{% if user.is_superuser and post.draft %}<span
-                    style="color: red; background-color: black;">[DRAFT]</span>{% endif %}</h1>
-            <p class="content-markdown">{{ post.content }}</p>
-        </div>
+        {% if user.is_superuser and post.draft %}
+        <span class="draft-label">[DRAFT]</span>
+        {% endif %}
+        <p class="content-markdown">{{ post.content }}</p>
         {% else %}
         <p>Post not found.</p>
         {% endif %}
-        <a href="{% url 'blog' %}">&larr; Back to blog</a>
-    </div>
-    <div class="col-vc-3">
-        <!--Summary of content will appear here-->
+        <a href="{% url 'blog' %}" class="back-link">&larr; Back to blog</a>
     </div>
 </section>
 {% endblock main_content %}
