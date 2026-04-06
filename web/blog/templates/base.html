@@ -43,6 +43,15 @@
         <meta name="msapplication-TileImage" content="{% static 'favicons/ms-icon-144x144.png' %}">
         <meta name="theme-color" content="#ffffff">
 
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MCGV9534NL"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MCGV9534NL');
+        </script>
+
         <!--My stuff starts here-->
         <title>{% block title %}Victor Ng'eno — Software Engineer{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
