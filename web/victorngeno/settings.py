@@ -171,6 +171,6 @@ MANAGERS = ADMINS
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "blog_db.db"),
+        "NAME": os.path.join(BASE_DIR, "data", "blog_db.db"),
     }
 }
