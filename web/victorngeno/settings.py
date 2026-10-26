@@ -29,8 +29,9 @@ try:
 
 except ImportError:
     # means the local_settings file is not deployed online
-    # production settings are defined here
-    DEBUG = False
+    # production settings are defined here; the local compose sets
+    # PORTFOLIO_BLOG_DEBUG=True to run in debug mode inside docker
+    DEBUG = os.environ.get("PORTFOLIO_BLOG_DEBUG") == "True"
 
     SECRET_KEY = os.environ.get("PORTFOLIO_BLOG_SECRET_KEY", "")
     EMAIL_HOST = os.environ.get("EMAIL_HOST")
@@ -39,13 +40,19 @@ except ImportError:
 
 ALLOWED_HOSTS = [
     "veekay.herokuapp.com",
+    "victorngeno.com",
     "www.victorngeno.com",
     "139.162.243.214",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
+    "https://victorngeno.com",
     "https://www.victorngeno.com",
 ]
+
+# TLS terminates at Traefik; trust its forwarded scheme so request.is_secure()
+# and CSRF origin checks see https
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 if DEBUG:
     ALLOWED_HOSTS.extend(
