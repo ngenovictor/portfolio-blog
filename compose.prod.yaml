@@ -1,0 +1,42 @@
+services:
+  # Django app (gunicorn + whitenoise), routed by the server's external Traefik.
+  web:
+    build:
+      dockerfile: ./build/web/Dockerfile
+      context: .
+    container_name: portfolio-blog-web
+    restart: unless-stopped
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"
+        loki-retries: "2"
+        loki-batch-size: "100"
+        loki-external-labels: "job={{.Name}}"
+    # No ports exposed - Traefik reaches it over the traefik-proxy network
+    environment:
+      PORTFOLIO_BLOG_SECRET_KEY: ${PORTFOLIO_BLOG_SECRET_KEY}
+      PORTFOLIO_BLOG_DEBUG: "False"
+      EMAIL_HOST: ${EMAIL_HOST:-}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-}
+    volumes:
+      # SQLite DB lives here (settings: data/blog_db.db)
+      - portfolio_blog_data:/app/data
+    networks:
+      - traefik-proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portfolio-blog.rule=Host(`victorngeno.com`) || Host(`www.victorngeno.com`)
+      - traefik.http.routers.portfolio-blog.entrypoints=https
+      - traefik.http.routers.portfolio-blog.service=portfolio-blog
+      - traefik.http.services.portfolio-blog.loadbalancer.server.port=8000
+
+# Docker Networks
+networks:
+  traefik-proxy:
+    external: true
+
+# Docker Volumes
+volumes:
+  portfolio_blog_data:
+    driver: local

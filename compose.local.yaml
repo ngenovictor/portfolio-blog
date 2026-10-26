@@ -1,0 +1,26 @@
+services:
+  web:
+    container_name: portfolio_blog_web_dev
+    restart: no
+    build:
+      dockerfile: ./build/web/Dockerfile
+      context: .
+    environment:
+      PORTFOLIO_BLOG_SECRET_KEY: ${PORTFOLIO_BLOG_SECRET_KEY:-local-dev-secret-key}
+      # True runs Django's dev server with DEBUG on (allows localhost).
+      PORTFOLIO_BLOG_DEBUG: ${PORTFOLIO_BLOG_DEBUG:-True}
+    volumes:
+      - portfolio_blog_data:/app/data
+    ports:
+      - "8001:8000" # Exposed for local browsing at http://localhost:8001
+    develop:
+      watch:
+        - action: sync
+          path: ./web
+          target: /app/
+
+        - action: rebuild
+          path: ./build/web/requirements.txt
+
+volumes:
+  portfolio_blog_data:
