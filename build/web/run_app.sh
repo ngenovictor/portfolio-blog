@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stop if migrations or collectstatic fail rather than serving a broken schema
+set -e
+
 # Apply database migrations
 echo "Apply database migrations"
 venv/bin/python manage.py migrate
