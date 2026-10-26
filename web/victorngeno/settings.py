@@ -152,16 +152,27 @@ STATICFILES_DIRS = (
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media_root")
 
-# email settings
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-EMAIL_HOST_USER = "victor@mail.victorngeno.com"
-DEFAULT_FROM_EMAIL = f"Victor <{EMAIL_HOST_USER}>"
+# Email Configuration
+if not DEBUG:
+    EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
+    # Production email settings - these should be set in production
+    EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
+    EMAIL_PORT = int(os.environ.get("EMAIL_PORT", "587"))
+    EMAIL_USE_TLS = (
+        os.environ.get("EMAIL_USE_TLS", "True").lower() == "true"
+    )  # port 587 typically uses TLS
+    EMAIL_USE_SSL = (
+        os.environ.get("EMAIL_USE_SSL", "False").lower() == "true"
+    )  # port 465 typically uses SSL
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+    DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL") or "Victor <victor@mail.victorngeno.com>"
+    SERVER_EMAIL = DEFAULT_FROM_EMAIL
+else:
+    # Development - use console backend for easy testing
+    EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 
-ADMINS = [("Victor", EMAIL_HOST_USER)]
+ADMINS = [("Victor", "victor@mail.victorngeno.com")]
 MANAGERS = ADMINS
 
 DATABASES = {
