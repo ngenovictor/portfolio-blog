@@ -12,4 +12,4 @@ Can be accessed through [victorngeno.com](https://www.victorngeno.com)
 
 **_Running_**
 - Local: `docker compose -f compose.local.yaml watch` — starts Postgres and serves on http://localhost:8000 with the Django dev server and live sync of `./web`.
-- Production: `docker compose -f compose.prod.yaml up -d --build` — expects the server's external Traefik on the `traefik-proxy` network (with the `https` entrypoint) and `PORTFOLIO_BLOG_SECRET_KEY`, `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` in `.env`. Routes `victorngeno.com` and `www.victorngeno.com`; data lives in the `postgres` service (`postgres_data` volume), reachable only on the internal network.
+- Production: `docker compose -f compose.prod.yaml up -d --build` — expects the server's external Traefik on the `traefik-proxy` network (with the `https` entrypoint) and a `.env` copied from `.env.example`. Routes `victorngeno.com` and `www.victorngeno.com`; data lives in the `postgres` service (`postgres_data` volume), reachable only on the internal network.
