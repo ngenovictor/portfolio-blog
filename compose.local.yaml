@@ -12,7 +12,7 @@ services:
     volumes:
       - portfolio_blog_data:/app/data
     ports:
-      - "8001:8000" # Exposed for local browsing at http://localhost:8001
+      - "8000:8000" # Exposed for local browsing at http://localhost:8000
     develop:
       watch:
         - action: sync
