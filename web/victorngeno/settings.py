@@ -23,8 +23,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = os.environ.get("PORTFOLIO_BLOG_DEBUG") == "True"
 
 SECRET_KEY = os.environ.get("PORTFOLIO_BLOG_SECRET_KEY", "")
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 
 ALLOWED_HOSTS = [
@@ -156,6 +154,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media_root")
 
 # email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = "victor@mail.victorngeno.com"
