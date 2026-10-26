@@ -27,6 +27,8 @@ services:
       PORTFOLIO_BLOG_SECRET_KEY: ${PORTFOLIO_BLOG_SECRET_KEY:-local-dev-secret-key}
       # True runs Django's dev server with DEBUG on (allows localhost).
       PORTFOLIO_BLOG_DEBUG: ${PORTFOLIO_BLOG_DEBUG:-True}
+      EMAIL_HOST: ${EMAIL_HOST:-}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-}
       POSTGRES_DB: portfolio_blog
       POSTGRES_USER: portfolio_blog
       POSTGRES_PASSWORD: portfolio_blog_dev
