@@ -18,34 +18,28 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-try:
-    from .local_settings import EMAIL_HOST, EMAIL_HOST_PASSWORD, SECRET_KEY
+# All settings come from the environment (see .env.example and the compose
+# files); compose.local.yaml sets PORTFOLIO_BLOG_DEBUG=True for development
+DEBUG = os.environ.get("PORTFOLIO_BLOG_DEBUG") == "True"
 
-    # define local developments settings
-    DEBUG = True
-    SECRET_KEY = SECRET_KEY
-    EMAIL_HOST = EMAIL_HOST
-    EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-
-except ImportError:
-    # means the local_settings file is not deployed online
-    # production settings are defined here
-    DEBUG = False
-
-    SECRET_KEY = os.environ.get("PORTFOLIO_BLOG_SECRET_KEY", "")
-    EMAIL_HOST = os.environ.get("EMAIL_HOST")
-    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+SECRET_KEY = os.environ.get("PORTFOLIO_BLOG_SECRET_KEY", "")
 
 
 ALLOWED_HOSTS = [
     "veekay.herokuapp.com",
+    "victorngeno.com",
     "www.victorngeno.com",
     "139.162.243.214",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
+    "https://victorngeno.com",
     "https://www.victorngeno.com",
 ]
+
+# TLS terminates at Traefik; trust its forwarded scheme so request.is_secure()
+# and CSRF origin checks see https
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 if DEBUG:
     ALLOWED_HOSTS.extend(
@@ -158,19 +152,36 @@ STATICFILES_DIRS = (
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media_root")
 
-# email settings
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-EMAIL_HOST_USER = "victor@mail.victorngeno.com"
-DEFAULT_FROM_EMAIL = f"Victor <{EMAIL_HOST_USER}>"
+# Email Configuration
+if not DEBUG:
+    EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
+    # Production email settings - these should be set in production
+    EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
+    EMAIL_PORT = int(os.environ.get("EMAIL_PORT", "587"))
+    EMAIL_USE_TLS = (
+        os.environ.get("EMAIL_USE_TLS", "True").lower() == "true"
+    )  # port 587 typically uses TLS
+    EMAIL_USE_SSL = (
+        os.environ.get("EMAIL_USE_SSL", "False").lower() == "true"
+    )  # port 465 typically uses SSL
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+    DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL") or "victorngeno@baruamail.com"
+    SERVER_EMAIL = DEFAULT_FROM_EMAIL
+else:
+    # Development - use console backend for easy testing
+    EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 
-ADMINS = [("Victor", EMAIL_HOST_USER)]
+ADMINS = [("Victor", "victorngeno@baruamail.com")]
 MANAGERS = ADMINS
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "data", "blog_db.db"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("POSTGRES_DB", "portfolio_blog"),
+        "USER": os.environ.get("POSTGRES_USER", "portfolio_blog"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", ""),
+        "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
+        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }

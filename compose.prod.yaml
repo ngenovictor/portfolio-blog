@@ -1,0 +1,84 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:18-alpine
+    container_name: portfolio-blog-postgres
+    restart: unless-stopped
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"
+        loki-retries: "2"
+        loki-batch-size: "100"
+        loki-external-labels: "job={{.Name}}"
+    # No ports exposed - internal network only
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      # Postgres 18+ keeps data in a versioned subdirectory of /var/lib/postgresql
+      - postgres_data:/var/lib/postgresql
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Django app (gunicorn + whitenoise), routed by the server's external Traefik.
+  web:
+    build:
+      dockerfile: ./build/web/Dockerfile
+      context: .
+    container_name: portfolio-blog-web
+    restart: unless-stopped
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"
+        loki-retries: "2"
+        loki-batch-size: "100"
+        loki-external-labels: "job={{.Name}}"
+    # No ports exposed - Traefik reaches it over the traefik-proxy network
+    environment:
+      PORTFOLIO_BLOG_SECRET_KEY: ${PORTFOLIO_BLOG_SECRET_KEY}
+      PORTFOLIO_BLOG_DEBUG: "False"
+      EMAIL_HOST: ${EMAIL_HOST}
+      EMAIL_PORT: ${EMAIL_PORT:-587}
+      EMAIL_USE_TLS: ${EMAIL_USE_TLS:-true}
+      EMAIL_USE_SSL: ${EMAIL_USE_SSL:-false}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+      DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+    networks:
+      - default
+      - traefik-proxy
+    depends_on:
+      postgres:
+        condition: service_healthy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portfolio-blog.rule=Host(`victorngeno.com`) || Host(`www.victorngeno.com`)
+      - traefik.http.routers.portfolio-blog.entrypoints=https
+      - traefik.http.routers.portfolio-blog.service=portfolio-blog
+      - traefik.http.services.portfolio-blog.loadbalancer.server.port=8000
+
+# Docker Networks
+networks:
+  traefik-proxy:
+    external: true
+  default:
+    internal: true # No external access
+
+# Docker Volumes
+volumes:
+  postgres_data:
+    driver: local

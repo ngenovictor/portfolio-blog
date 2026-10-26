@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: portfolio_blog_postgres_dev
+    restart: no
+    # No ports exposed - avoids clashing with other local Postgres instances
+    environment:
+      POSTGRES_DB: portfolio_blog
+      POSTGRES_USER: portfolio_blog
+      POSTGRES_PASSWORD: portfolio_blog_dev
+    volumes:
+      # Postgres 18+ keeps data in a versioned subdirectory of /var/lib/postgresql
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portfolio_blog -d portfolio_blog"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    container_name: portfolio_blog_web_dev
+    restart: no
+    build:
+      dockerfile: ./build/web/Dockerfile
+      context: .
+    environment:
+      PORTFOLIO_BLOG_SECRET_KEY: ${PORTFOLIO_BLOG_SECRET_KEY:-local-dev-secret-key}
+      # True runs Django's dev server with DEBUG on (allows localhost).
+      PORTFOLIO_BLOG_DEBUG: ${PORTFOLIO_BLOG_DEBUG:-True}
+      POSTGRES_DB: portfolio_blog
+      POSTGRES_USER: portfolio_blog
+      POSTGRES_PASSWORD: portfolio_blog_dev
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+    ports:
+      - "8000:8000" # Exposed for local browsing at http://localhost:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    develop:
+      watch:
+        - action: sync
+          path: ./web
+          target: /app/
+
+        - action: rebuild
+          path: ./build/web/requirements.txt
+
+volumes:
+  postgres_data:

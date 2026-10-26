@@ -20,8 +20,11 @@ class Migration(migrations.Migration):
                 ('image', models.TextField()),
                 ('summary', models.TextField()),
                 ('content', models.TextField()),
-                ('date_created', models.TimeField(auto_now_add=True)),
-                ('date_updated', models.TimeField(auto_now=True)),
+                # Originally TimeField, changed to DateTimeField by 0004. Created as
+                # DateTimeField here because Postgres can't cast time -> timestamp,
+                # so 0004 is a no-op on fresh databases.
+                ('date_created', models.DateTimeField(auto_now_add=True)),
+                ('date_updated', models.DateTimeField(auto_now=True)),
             ],
         ),
     ]
