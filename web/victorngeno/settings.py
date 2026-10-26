@@ -172,7 +172,7 @@ else:
     # Development - use console backend for easy testing
     EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 
-ADMINS = [("Victor", "victor@mail.victorngeno.com")]
+ADMINS = [("Victor", "victorngeno@baruamail.com")]
 MANAGERS = ADMINS
 
 DATABASES = {
