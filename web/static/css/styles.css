@@ -351,6 +351,13 @@ header .intro-text .skills {
   color: #18BC9C;
 }
 
+/* Small gap between nav links when they sit in a row */
+@media (min-width: 768px) {
+  .navbar-custom .navbar-nav > li + li {
+    margin-left: 6px;
+  }
+}
+
 /* Desktop: compact navbar on every page */
 @media (min-width: 992px) {
   #mainNav.navbar-custom {
