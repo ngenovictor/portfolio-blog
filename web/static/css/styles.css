@@ -339,16 +339,19 @@ header .intro-text .skills {
   color: #18BC9C;
 }
 
-/* Desktop: fit nav + intro + footer on one screen without scrolling */
+/* Desktop: compact navbar on every page */
 @media (min-width: 992px) {
-  .home #mainNav.navbar-custom {
+  #mainNav.navbar-custom {
     padding: 10px 0;
   }
 
-  .home #mainNav .navbar-brand {
+  #mainNav .navbar-brand {
     font-size: 1.5em;
   }
+}
 
+/* Desktop: fit nav + intro + footer on one screen without scrolling */
+@media (min-width: 992px) {
   .home header {
     margin-top: 70px;
   }
