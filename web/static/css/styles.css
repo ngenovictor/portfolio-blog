@@ -209,6 +209,7 @@ header .about-text{
 
 .social-links {
   display: flex;
+  justify-content: center;
   gap: 1em;
   margin-top: 0.5em;
   flex-wrap: wrap;
@@ -353,6 +354,59 @@ footer .email-copy:focus {
 .email-copy.copied .email-copy-toast {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+/* Single-screen home page */
+.home header {
+  flex: 1 0 auto;
+}
+
+.home-footer {
+  background: #2C3E50;
+  color: white;
+  text-align: center;
+  padding: 12px 15px;
+  font-size: 14px;
+}
+
+.home-footer a {
+  color: #18BC9C;
+}
+
+/* Desktop: fit nav + intro + footer on one screen without scrolling */
+@media (min-width: 992px) {
+  .home #mainNav.navbar-custom {
+    padding: 10px 0;
+  }
+
+  .home #mainNav .navbar-brand {
+    font-size: 1.5em;
+  }
+
+  .home header {
+    margin-top: 70px;
+  }
+
+  .home header .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .home header .about-text {
+    padding: 0 20px;
+  }
+
+  .home header .about-text p {
+    font-size: 17px;
+    margin-bottom: 0;
+  }
+
+  .home header hr.about {
+    margin: 12px auto;
+  }
 }
 
 /* end landing page styles */
