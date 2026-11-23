@@ -400,7 +400,8 @@ footer .email-copy:focus {
   }
 
   .home header .about-text p {
-    font-size: 17px;
+    font-size: 24px;
+    line-height: 1.5;
     margin-bottom: 0;
   }
 
