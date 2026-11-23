@@ -42,4 +42,35 @@
         }
     })
 
+    // Copy the email address to the clipboard and flash a "Copied!" note
+    function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text);
+        }
+        // Fallback for plain-http (local dev) and older browsers
+        return new Promise(function(resolve, reject) {
+            var $tmp = $("<textarea>").val(text).css({position: "fixed", opacity: 0}).appendTo("body");
+            $tmp[0].select();
+            var ok = document.execCommand("copy");
+            $tmp.remove();
+            ok ? resolve() : reject();
+        });
+    }
+
+    $(".email-copy").on("click", function() {
+        var $btn = $(this);
+        var $toast = $btn.find(".email-copy-toast");
+        copyText($btn.data("email")).then(function() {
+            $toast.text("Copied!");
+        }, function() {
+            $toast.text("Copy failed");
+        }).then(function() {
+            $btn.addClass("copied");
+            clearTimeout($btn.data("timer"));
+            $btn.data("timer", setTimeout(function() {
+                $btn.removeClass("copied");
+            }, 1500));
+        });
+    });
+
 })(jQuery); // End of use strict

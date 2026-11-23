@@ -261,7 +261,6 @@ header .intro{
   gap: 50px;
   justify-content: center;
   align-items: center;
-  height: 100%;
 }
 header .intro-text{
   /* border: ; */
@@ -289,6 +288,71 @@ header .intro-text .skills {
   header .intro-text .skills {
     font-size: 1.75em;
   }
+}
+
+/* Click-to-copy email */
+.email-row {
+  display: flex;
+  justify-content: center;
+  margin: 1em 0 0;
+}
+
+.email-copy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  background: #2C3E50;
+  color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: large;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.email-copy:hover,
+.email-copy:focus {
+  background: #1a252f;
+  outline: none;
+}
+
+.email-copy:active {
+  transform: scale(0.97);
+}
+
+footer .email-copy {
+  background: #18BC9C;
+  font-size: 1em;
+}
+
+footer .email-copy:hover,
+footer .email-copy:focus {
+  background: #128f76;
+}
+
+.email-copy-toast {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+  background: white;
+  color: #2C3E50;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.email-copy.copied .email-copy-toast {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 /* end landing page styles */
