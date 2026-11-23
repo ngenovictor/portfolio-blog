@@ -1,4 +1,4 @@
-{% load static %}
+{% load static seo %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,23 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Victor Ng'eno">
 
-        {% block seo %}
-        <meta name="description" content="Victor Ng'eno — Senior Software Engineer. Specializing in Web, Mobile and GIS development. Based in Nairobi, Kenya.">
-        <meta name="keywords" content="Victor Ngeno, Software Engineer, Web Developer, GIS, Python, Django, Flutter, Nairobi Kenya">
-        <meta name="robots" content="index, follow">
-        <meta property="og:type" content="profile">
-        <meta property="og:site_name" content="Victor Ng'eno">
-        <meta property="og:title" content="Victor Ng'eno — Software Engineer">
-        <meta property="og:description" content="Senior Software Engineer specializing in Web, Mobile and GIS development. Based in Nairobi, Kenya.">
-        <meta property="og:url" content="https://www.victorngeno.com/">
-        <meta property="profile:first_name" content="Victor">
-        <meta property="profile:last_name" content="Ng'eno">
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@veekay254">
-        <meta name="twitter:title" content="Victor Ng'eno — Software Engineer">
-        <meta name="twitter:description" content="Senior Software Engineer specializing in Web, Mobile and GIS development.">
-        <link rel="canonical" href="https://www.victorngeno.com/">
-        {% endblock seo %}
+        {% block seo %}{% include "seo_meta.html" %}{% endblock seo %}
 
         <link rel="apple-touch-icon" sizes="57x57" href="{% static 'favicons/apple-icon-57x57.png' %}">
         <link rel="apple-touch-icon" sizes="60x60" href="{% static 'favicons/apple-icon-60x60.png' %}">
@@ -65,7 +49,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     </head>
 
-    <body id="page-top">
+    <body id="page-top" class="home">
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -87,18 +71,9 @@
                         <li class="js-scroll-trigger">
                             <a href="#page-top">Home</a>
                         </li>
-                        <li class="js-scroll-trigger">
-                            <a href="#portfolio">Portfolio</a>
-                        </li>
                         <!-- <li class="js-scroll-trigger">
                         <a href="#about">About</a>
                     </li> -->
-                        <li class="js-scroll-trigger">
-                            <a href="#contact">Contact</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'journey' %}">Journey</a>
-                        </li>
                         <li>
                             <a href="{% url 'blog' %}">Blog</a>
                         </li>
@@ -111,54 +86,9 @@
         {% block main_content %} {% endblock main_content %}
 
         <!-- Footer -->
-        <footer class="text-center">
-            <div class="footer-above">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-col col-md-4">
-                            <h3>Location</h3>
-                            <p>Nairobi, Kenya</p>
-                        </div>
-                        <div class="footer-col col-md-4">
-                            <h3>Around the Web</h3>
-                            <ul class="list-inline">
-                                <li>
-                                    <a href="https://plus.google.com/+VictorNgeno321" class="btn-social btn-outline">
-                                        <span class="sr-only">Google Plus</span>
-                                        <i class="fa fa-fw fa-google-plus"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/veekay254" class="btn-social btn-outline">
-                                        <span class="sr-only">Twitter</span>
-                                        <i class="fa fa-fw fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/in/ngenovictor/" class="btn-social btn-outline">
-                                        <span class="sr-only">Linked In</span>
-                                        <i class="fa fa-fw fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="footer-col col-md-4">
-                            <h3>Message</h3>
-                            <p>Feel free to contact me, leave a feedback of anything and share your thoughts. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-below">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            Copyright &copy;
-                            <a href="/">Victor Ngeno</a> {% now "Y" %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <footer class="slim-footer">
+            <span><i class="fa fa-map-marker" aria-hidden="true"></i> Nairobi, Kenya</span>
+            <span>Copyright &copy; <a href="/">Victor Ngeno</a> {% now "Y" %}</span>
         </footer>
 
         <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
@@ -169,6 +99,8 @@
         </div>
 
 
+
+        {{ structured_data|ld_json }}
 
         <!-- Scripts at the bottom of page so it loads faster -->
         <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>

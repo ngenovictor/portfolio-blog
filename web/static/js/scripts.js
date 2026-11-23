@@ -42,94 +42,34 @@
         }
     })
 
-    // Floating label headings for the contact form
-    $(function() {
-        $("body").on("input propertychange", ".floating-label-form-group", function(e) {
-            $(this).toggleClass("floating-label-form-group-with-value", !!$(e.target).val());
-        }).on("focus", ".floating-label-form-group", function() {
-            $(this).addClass("floating-label-form-group-with-focus");
-        }).on("blur", ".floating-label-form-group", function() {
-            $(this).removeClass("floating-label-form-group-with-focus");
+    // Copy the email address to the clipboard and flash a "Copied!" note
+    function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text);
+        }
+        // Fallback for plain-http (local dev) and older browsers
+        return new Promise(function(resolve, reject) {
+            var $tmp = $("<textarea>").val(text).css({position: "fixed", opacity: 0}).appendTo("body");
+            $tmp[0].select();
+            var ok = document.execCommand("copy");
+            $tmp.remove();
+            ok ? resolve() : reject();
         });
-    });
+    }
 
-    //The home page contact form submit
-    $(function() {
-        $("form#contactForm").submit(function (event) {
-            event.preventDefault();
-            var name = $("input#name").val();
-            var emailAddress = $("input#email").val();
-            var message = $("textarea#message").val();
-            var csrfmiddlewaretoken = $("input[name=csrfmiddlewaretoken]").val();
-            var data = {
-                "name":name,
-                "email_address":emailAddress,
-                "message":message,
-                "csrfmiddlewaretoken":csrfmiddlewaretoken
-            }
-
-            $.ajax({
-                method:"POST",
-                url:"/contact",
-                data:data,
-                success:function(message){
-                    if(message["message"] == "success"){
-                        $("input#name").val("");
-                        $("input#email").val("");
-                        $("textarea#message").val("");
-                        $("p#contact_message").text("Thank you for contacting me. Your message has been received. I will be sure to get back to you as soon as I can");
-                        $("#message_send_feedback").modal("show");
-                    }else if(message["message"] == "error"){
-                        $("p#contact_message").text("Something went wrong. Please ensure that you have filled all the inputs and try again!!");
-                        $("#message_send_feedback").modal("show");
-                    }else{
-                        $("p#contact_message").text("");
-                        $("p#contact_message").append("Thank you for contacting me. There was an error on our side. Please contact me on <a href='mailto:ngenovictor321@gmail.com'>Email</a>");
-                        $("#message_send_feedback").modal("show");
-                    }
-                }
-            });
-        });
-    });
-
-
-    //The blog page contact form submit
-    $(function() {
-        $("form#blogContactForm").submit(function (event) {
-            event.preventDefault();
-            var name = $("input#name").val();
-            var emailAddress = $("input#email").val();
-            var message = $("textarea#message").val();
-            var csrfmiddlewaretoken = $("input[name=csrfmiddlewaretoken]").val();
-            $("#message_send_feedback").modal("hide");
-            var data = {
-                "name":name,
-                "email_address":emailAddress,
-                "message":message,
-                "csrfmiddlewaretoken":csrfmiddlewaretoken
-            }
-
-            $.ajax({
-                method:"POST",
-                url:"/contact",
-                data:data,
-                success:function(message){
-                    if(message["message"] == "success"){
-                        $("input#name").val("");
-                        $("input#email").val("");
-                        $("textarea#message").val("");
-                        $("p#contact_message").text("Thank you for contacting me. Your message has been received. I will be sure to get back to you as soon as I can");
-                        $("#blog_message_send_feedback").modal("show");
-                    }else if(message["message"] == "error"){
-                        $("p#contact_message").text("Something went wrong. Please ensure that you have filled all the inputs and try again!!");
-                        $("#blog_message_send_feedback").modal("show");
-                    }else{
-                        $("p#contact_message").text("");
-                        $("p#contact_message").append("Thank you for contacting me. There was an error on our side. Please contact me on <a href='mailto:ngenovictor321@gmail.com'>Email</a>");
-                        $("#blog_message_send_feedback").modal("show");
-                    }
-                }
-            });
+    $(".email-copy").on("click", function() {
+        var $btn = $(this);
+        var $toast = $btn.find(".email-copy-toast");
+        copyText($btn.data("email")).then(function() {
+            $toast.text("Copied!");
+        }, function() {
+            $toast.text("Copy failed");
+        }).then(function() {
+            $btn.addClass("copied");
+            clearTimeout($btn.data("timer"));
+            $btn.data("timer", setTimeout(function() {
+                $btn.removeClass("copied");
+            }, 1500));
         });
     });
 
