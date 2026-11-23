@@ -37,6 +37,10 @@ CSRF_TRUSTED_ORIGINS = [
     "https://www.victorngeno.com",
 ]
 
+# Canonical origin for absolute URLs in SEO/social meta tags, structured data,
+# robots.txt and the sitemap, so they don't depend on the request's Host header.
+SITE_URL = os.environ.get("SITE_URL", "https://www.victorngeno.com").rstrip("/")
+
 # TLS terminates at Traefik; trust its forwarded scheme so request.is_secure()
 # and CSRF origin checks see https
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -59,6 +63,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
     "blog",
 ]
 

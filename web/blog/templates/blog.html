@@ -3,21 +3,6 @@
 
 {% block title %}Blog — Victor Ng'eno{% endblock %}
 
-{% block seo %}
-<meta name="description" content="Technical blog by Victor Ng'eno — articles on software development, GIS, Python, Django, Flutter and more.">
-<meta name="keywords" content="Victor Ngeno blog, software development, Python, Django, GIS, Flutter, technical articles">
-<meta name="robots" content="index, follow">
-<meta property="og:type" content="blog">
-<meta property="og:site_name" content="Victor Ng'eno">
-<meta property="og:title" content="Blog — Victor Ng'eno">
-<meta property="og:description" content="Technical blog by Victor Ng'eno — articles on software development, GIS, Python, Django, Flutter and more.">
-<meta property="og:url" content="{{ request.build_absolute_uri }}">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog — Victor Ng'eno">
-<meta name="twitter:description" content="Technical blog by Victor Ng'eno — articles on software development, GIS, Python, Django, Flutter and more.">
-<link rel="canonical" href="{{ request.build_absolute_uri }}">
-{% endblock seo %}
-
 {% block main_content %}
 <section id="blog" class="blog-list">
     <div class="blog-list-container">
