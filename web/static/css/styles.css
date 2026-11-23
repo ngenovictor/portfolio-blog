@@ -291,47 +291,13 @@ header .intro-text .skills {
   }
 }
 
-/* Click-to-copy email */
-.email-row {
-  display: flex;
-  justify-content: center;
-  margin: 1em 0 0;
-}
-
+/* Click-to-copy email (looks like .social-link; a <button> needs its defaults reset) */
 .email-copy {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  background: #2C3E50;
-  color: white;
-  border: 2px solid white;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-weight: bold;
-  font-size: large;
+  border: none;
+  font-family: inherit;
+  line-height: inherit;
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-}
-
-.email-copy:hover,
-.email-copy:focus {
-  background: #1a252f;
-  outline: none;
-}
-
-.email-copy:active {
-  transform: scale(0.97);
-}
-
-footer .email-copy {
-  background: #18BC9C;
-  font-size: 1em;
-}
-
-footer .email-copy:hover,
-footer .email-copy:focus {
-  background: #128f76;
 }
 
 .email-copy-toast {
