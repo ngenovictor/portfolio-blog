@@ -128,9 +128,12 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
+
+
+# Keep 32-bit integer primary keys; Django 6.0 changed the default to BigAutoField,
+# which would otherwise generate a migration altering every existing id column.
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 
 # Static files (CSS, JavaScript, Images)
