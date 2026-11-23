@@ -241,7 +241,7 @@ header a {
   font-size: large;
 
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   /* mobile styles */
   header {
     margin-top: 50px;
@@ -322,9 +322,17 @@ header .intro-text .skills {
   transform: translate(-50%, 0);
 }
 
-/* Single-screen home page */
+/* Single-screen home page: intro fills the space between nav and footer, centred vertically */
 .home header {
   flex: 1 0 auto;
+}
+
+.home header .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .slim-footer {
@@ -358,14 +366,6 @@ header .intro-text .skills {
 @media (min-width: 992px) {
   .home header {
     margin-top: 70px;
-  }
-
-  .home header .container {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   .home header .about-text {
