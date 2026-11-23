@@ -639,6 +639,10 @@ fieldset[disabled] .btn-success.active {
   margin: 0 auto;
 }
 
+.blog-empty {
+  margin-top: 3em;
+}
+
 @media (max-width: 768px) {
   .blog-list {
     padding: 80px 1em 2em;
