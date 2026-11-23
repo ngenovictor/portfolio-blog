@@ -23,7 +23,6 @@
     <div class="blog-list-container">
         {% if posts %}
         {% for post in posts %}
-        {% if not post.draft or user.is_superuser %}
         <article class="blog-card">
             <a href="{% url 'post_detail' post.slug %}">
                 <img src="{{ post.image }}" alt="{{ post.title }}" class="blog-card-image">
@@ -37,7 +36,6 @@
                 <p class="blog-card-summary">{{ post.summary }}</p>
             </div>
         </article>
-        {% endif %}
         {% endfor %}
         {% else %}
         <p class="blog-empty">Watch out for posts later 😊</p>
