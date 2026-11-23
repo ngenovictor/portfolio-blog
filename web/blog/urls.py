@@ -7,5 +7,4 @@ urlpatterns = [
     path("blog", views.BlogView.as_view(), name="blog"),
     path("blog/<slug:slug>", views.PostDetailView.as_view(), name="post_detail"),
     path("journey", views.journey, name="journey"),
-    path("contact", views.contact, name="contact"),
 ]
